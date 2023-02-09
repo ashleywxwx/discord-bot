@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "node deploy-commands.js",
+    "destroy": "node destroy-commands.js",
     "lint": "eslint index.js deploy-commands.js commands/**",
     "start": "node index.js"
   },
