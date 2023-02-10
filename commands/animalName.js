@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { getAnimalNames } = require('../services/chat');
+const { getAnimalNames } = require('../services/animalChat');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -12,6 +12,6 @@ module.exports = {
 	async execute(interaction) {
 		const animal = interaction.options.getString('animal');
 		const suggestions = await getAnimalNames(animal);
-		await interaction.reply(suggestions);
+		await interaction.reply(`Here are some name ideas for a ${animal}: ${suggestions}`);
 	},
 };
