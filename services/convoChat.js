@@ -17,7 +17,6 @@ const getConversation = async prompt => {
 		});
 		return completion.data.choices[0].text;
 	} catch (error) {
-		// Consider adjusting the error handling logic for your use case
 		if (error.response) {
 			console.error(error.response.status, error.response.data);
 			return 'Something went wrong';
