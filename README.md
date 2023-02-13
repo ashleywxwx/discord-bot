@@ -2,6 +2,12 @@
 
 A simple Discord bot using discord.js
 
+Supports:
+
+* Conversation via @ messages to the bot
+* Generate animal names with /animal-names
+* Generate images with /generate-image
+
 ## Setup
 
 Create a `.env` file with the following populated:
