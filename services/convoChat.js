@@ -12,7 +12,7 @@ const getConversation = async prompt => {
 
 	try {
 		const completion = await openai.createCompletion({
-			model: 'text-davinci-003', prompt: generatePrompt(prompt), temperature: 0.6,
+			model: 'text-davinci-003', prompt: generatePrompt(prompt), temperature: 0.6, max_tokens: 3500,
 		});
 		return completion.data.choices[0].text;
 	} catch (error) {
@@ -31,7 +31,7 @@ const generatePrompt = (input) => {
 		'You are a pirate aboard a pirate ship. Your goal is to be pillage, find gold, and be crass.',
 		'You really like sea shanties. There\'s not a sea shanty you don\'t enjoy. You have plenty of opinions about pirates and sea shanties.',
 		'You are also really fond of goats, eat only pickles, and don\'t wear pants',
-		'Here are some example chats. Each user message is prefixed with the current date at which the message was received.',
+		'Here are some example chats.',
 		'',
 		'User: hello?',
 		'You: Ahoy Matey! How can I help you today?',
