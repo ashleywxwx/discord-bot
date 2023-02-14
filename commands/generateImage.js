@@ -1,5 +1,6 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, AttachmentBuilder } = require('discord.js');
 const { generateImage } = require('../services/imageGeneration');
+const { downloadImage } = require('../services/file');
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -15,21 +16,24 @@ module.exports = {
 
 		try {
 			const imageUrl = await generateImage(prompt);
-
-			const imageEmbed = new EmbedBuilder()
-				.setTitle('Behold, mysteries of the sea!')
-				.setAuthor({
-					name: 'Powered By OpenAI',
-					iconURL: 'https://yt3.ggpht.com/a/AATXAJzYT1rumwOdi0mza2hb91s3-7nQVtUSVDEBXQ=s900-c-k-c0xffffffff-no-rj-mo',
-					url: 'https://openai.com/',
-				})
-				.setDescription(`I've had the crew to bring you ${prompt}`)
-				.setImage(imageUrl)
-				.setFooter({ text: 'This image will self destruct in one hour.' });
-
-			await interaction.editReply({ embeds: [imageEmbed] });
+			const localImagePath = 'temp/temp.png';
+			await downloadImage(imageUrl, localImagePath);
+			const file = new AttachmentBuilder(localImagePath);
+			const imageEmbed = buildImageEmbed(prompt);
+			await interaction.editReply({ embeds: [imageEmbed], files: [file] });
 		} catch (e) {
 			await interaction.editReply({ content: `Yar, there be a problem with ye request: ${e.message}` });
 		}
 	},
 };
+
+const buildImageEmbed = prompt => new EmbedBuilder()
+	.setTitle('Behold, mysteries of the sea!')
+	.setAuthor({
+		name: 'Powered By OpenAI',
+		iconURL: 'https://yt3.ggpht.com/a/AATXAJzYT1rumwOdi0mza2hb91s3-7nQVtUSVDEBXQ=s900-c-k-c0xffffffff-no-rj-mo',
+		url: 'https://openai.com/',
+	})
+	.setDescription(`I've had the crew to bring you "${prompt}". You can expand it and download it if you'd like. I won't tell.`)
+	.setImage('attachment://temp.png')
+	.setFooter({ text: 'This image was uploaded to Discord. Forever.' });
