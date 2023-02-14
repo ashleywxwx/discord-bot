@@ -25,11 +25,15 @@ const generateImage = async prompt => {
 		return response.data.data[0].url;
 	} catch (error) {
 		if (error.response) {
-			console.error(error.response.status, error.response.data);
-			return 'Something went wrong';
+			if (error.response.data.error.message === 'Your request was rejected as a result of our safety system. Your prompt may contain text that is not allowed by our safety system.') {
+				throw Error('Naughty naughty, that\'s a spicy request!');
+			} else {
+				console.error(error.response.status, error.response.data);
+				throw Error('Something went wrong');
+			}
 		} else {
 			console.error(`Error with OpenAI API request: ${error.message}`);
-			return 'Something else went wrong';
+			throw Error('Something else went wrong');
 		}
 	}
 };

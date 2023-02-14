@@ -6,7 +6,6 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const getConversation = async prompt => {
-	console.log(`Getting conversation for ${prompt}`);
 	if (!configuration.apiKey) {
 		console.error('No OpenAI key found');
 	}

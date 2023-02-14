@@ -1,6 +1,6 @@
 # Discord Bot
 
-A simple Discord bot using discord.js
+A Discord bot powered by OpenAI and discord.js
 
 Supports:
 
@@ -11,6 +11,8 @@ Supports:
 ## Setup
 
 Create a `.env` file with the following populated:
+
+Example bot permissions: `https://discord.com/api/oauth2/authorize?client_id=REDACTED&permissions=0&scope=bot%20applications.commands`
 
 ```
 DISCORD_BOT_TOKEN=xxx
