@@ -2,12 +2,12 @@
   "name": "discord-bot",
   "version": "1.0.0",
   "description": "A Discord Bot",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "deploy": "node deployCommands.js",
-    "destroy": "node destroyCommands.js",
-    "lint": "eslint index.js deployCommands.js commands/** events/** services/**",
-    "start": "node index.js"
+    "deploy": "node src/utils/deployCommands.js",
+    "destroy": "node src/utils/destroyCommands.js",
+    "lint": "eslint src/**",
+    "start": "node src/index.js"
   },
   "author": "ashley.wxwx@gmail.com",
   "license": "MIT",
@@ -18,10 +18,9 @@
     "openai": "^3.1.0"
   },
   "devDependencies": {
-    "eslint": "^8.33.0",
+    "eslint": "^8.34.0",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "typescript": "^4.9.5"
+    "eslint-plugin-promise": "^6.1.1"
   }
 }
