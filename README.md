@@ -20,18 +20,34 @@ DISCORD_CLIENT_ID=xxx
 DISCORD_GUILD_ID=xxx
 ```
 
-## Lint
+## Development
+
+### Lint
 
 `npm run lint`
 
-## Deploy
+### Bootstrap
 
-`npm run deploy`
+Update/deploy Discord Webhooks. Only needs to be done once or after changes.
 
-## Start
+`npm run bootstrap`
+
+### Start Dev
 
 `npm start`
 
-## Clean Up
+### Clean Up
+
+Remove webhooks
 
 `npm run destroy`
+
+## Production
+
+### Build
+
+`docker build -t ashleywxwx/discord-bot .`
+
+### Run
+
+`docker run --env-file .env ashleywxwx/discord-bot`

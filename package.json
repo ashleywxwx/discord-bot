@@ -4,7 +4,7 @@
   "description": "A Discord Bot",
   "main": "src/index.js",
   "scripts": {
-    "deploy": "node src/utils/deployCommands.js",
+    "bootstrap": "node src/utils/deployCommands.js",
     "destroy": "node src/utils/destroyCommands.js",
     "lint": "eslint src/**",
     "start": "node src/index.js"
