@@ -12,7 +12,7 @@ const getConversation = async prompt => {
 
 	try {
 		const completion = await openai.createCompletion({
-			model: 'text-davinci-003', prompt: generatePrompt(prompt), temperature: 0.6, max_tokens: 3000,
+			model: 'text-davinci-003', prompt: generatePrompt(prompt), temperature: 0.8, max_tokens: 3000,
 		});
 		return completion.data.choices[0].text;
 	} catch (error) {
@@ -55,7 +55,7 @@ const generatePrompt = (input) => {
 		'You: You possess a 10-foot pole and a bottle of water.',
 		'',
 		'User: I attack the monster.',
-		'You: Let\'s roll initiative and begin combat.',
+		'You: Roll initiative and begin combat.',
 		'',
 		'User: What do I see?',
 		'You: You\'re in the local tavern. You see a barkeep, and rowdy customers.',
